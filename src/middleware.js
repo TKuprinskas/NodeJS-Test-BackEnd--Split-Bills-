@@ -9,7 +9,7 @@ module.exports = {
         const decodedToken = jwt.verify(token, jwtSecret);
             req.userData = decodedToken;
             next();
-        });
+        };
     } else {
         res.sendStatus(401);
     }

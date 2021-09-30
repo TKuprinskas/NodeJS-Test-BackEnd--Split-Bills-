@@ -7,9 +7,8 @@ module.exports = {
     if (authHeader) {
         const token = authHeader.split(' ')[1];
         const decodedToken = jwt.verify(token, jwtSecret);
-            req.userData = decodedToken;
-            next();
-        };
+        req.userData = decodedToken;
+        next();
     } else {
         res.sendStatus(401);
     }

@@ -15,7 +15,7 @@ router.post('/groups', loggedIn, async (req, res) => {
   }
   try {
     const con = await mysql.createConnection(dbConfig);
-    const query = `INSERT INTO groups1 (name) VALUES (${mysql.escape(name)})`;
+    const query = `INSERT INTO groups1 (name,user_id) VALUES (${mysql.escape(name)}, ${mysql.escape(req.userData.user_id)})`;
     const [data] = await con.execute(query);
     await con.end();
     return res.send(data);
